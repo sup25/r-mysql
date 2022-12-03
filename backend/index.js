@@ -2,6 +2,7 @@ import express from "express"
 import mysql from "mysql"
 import cors from "cors"
 
+
 const app = express()
 const db = mysql.createConnection({
     host: "localhost",
@@ -10,7 +11,7 @@ const db = mysql.createConnection({
     database: "test"
 })
 //Alter USER 'root'@localhost' IDENTIFIED WITH mysql_native_password BY 'halamadrid123';
-// app.use(express.json);
+app.use(express.json());
 app.use(cors())
 app.get("/", (req, res) => {
     res.json("hello this is the backend")
@@ -37,7 +38,14 @@ app.post("/books", (req, res) => {
 
     })
 })
-
+app.delete("/books/:id", (req, res) => {
+    const bookId = req.params.id;
+    const q = 'DELETE FROM boooks WHERE id=? '
+    db.query(q, [bookId], (error, data) => {
+        if (error) return res.send(error)
+        return res.json(data)
+    })
+})
 app.listen(8800, () => {
     console.log("connected to backend!")
 })
