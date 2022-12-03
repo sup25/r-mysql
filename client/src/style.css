@@ -49,3 +49,27 @@ img {
     color: rgb(139, 139, 234);
 
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+input {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid gray;
+
+}
+
+.formButton {
+    border: none;
+    padding: 10px;
+    background-color: #40e0d0;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+
+}
